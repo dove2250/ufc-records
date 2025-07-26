@@ -46,19 +46,25 @@ h1 {
 
 /* 右上角的 + 按钮 */
 #add-fight-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    font-size: 24px;
-    padding: 5px 10px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    z-index: 1000;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  padding: 6px 12px;
+  background: #e0e0e0;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
 }
+#add-fight-btn:hover {
+  background: #d0d0d0;
+  transform: scale(1.05);
+}
+
 
 /* 弹出的模态层（背景） */
 #fight-modal {
@@ -72,13 +78,17 @@ h1 {
 
 /* 弹窗内容 */
 .modal-content {
-    background: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    width: 300px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  background: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 420px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
+
 .modal-content input, .modal-content select {
     width: 100%;
     margin: 6px 0 12px;
