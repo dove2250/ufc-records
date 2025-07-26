@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dricus Du Plessis - UFC Record</title>
+    <link rel="stylesheet" href="ufc-style.css">
+</head>
+<body>
+    <h1>Dricus Du Plessis</h1>
+    <p class="subtitle">👑 UFC Middleweight Champion | 23-2</p>
+
+    <!-- 右上角加号按钮 -->
+    <button id="add-fight-btn" title="Add Fight">➕</button>
+
+    <!-- 弹窗表单 -->
+    <div id="fight-modal">
+      <div class="modal-content">
+        <h3>Add New Fight</h3>
+        <label>Opponent: <input type="text" id="opponent"></label><br>
+        <label>Event Name: <input type="text" id="event"></label><br>
+        <label>Result:
+          <select id="result">
+            <option value="win">Win</option>
+            <option value="loss">Loss</option>
+            <option value="draw">Draw/NC</option>
+          </select>
+        </label><br>
+        <label>Method: <input type="text" id="method"></label><br>
+        <label>Year: <input type="text" id="year"></label><br>
+        <button onclick="addFightCard()">Add</button>
+        <button onclick="closeModal()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- 现有战绩卡片 -->
+    <div class="fight-card">
+        <h2>vs. Khamzat Chimaev 👑</h2>
+        <p><em>UFC 319: Du Plessis vs. Chimaev</em></p>
+        <p>TBD</p>
+        <small>2025</small>
+    </div>
+
+    <div class="fight-card win">
+        <h2>vs. Sean Strickland 👑</h2>
+        <p><em>UFC 312: Du Plessis vs. Strickland 2</em></p>
+        <p>5th Round Decision – Unanimous</p>
+        <small>2025</small>
+    </div>
+
+    <div class="fight-card win">
+        <h2>vs. Israel Adesanya 👑</h2>
+        <p><em>UFC 305: Du Plessis vs. Adesanya</em></p>
+        <p>4th Round Submission – Rear Naked Choke</p>
+        <small>2024</small>
+    </div>
+
+    <div class="fight-card win">
+        <h2>vs. Sean Strickland 👑</h2>
+        <p><em>UFC 297: Strickland vs. Du Plessis</em></p>
+        <p>5th Round Decision – Split</p>
+        <small>2024</small>
+    </div>
+
+    <div class="fight-card win">
+        <h2>vs. Robert Whittaker</h2>
+        <p><em>UFC 290: Volkanovski vs. Rodriguez</em></p>
+        <p>2nd Round TKO – Punches</p>
+        <small>2023</small>
+    </div>
+
+    <div class="fight-card win">
+        <h2>vs. Derek Brunson</h2>
+        <p><em>UFC 285: Jones vs. Gane</em></p>
+        <p>2nd Round TKO – Punches</p>
+        <small>2023</small>
+    </div>
+
+    <div class="fight-card win">
+        <h2>vs. Darren Till</h2>
+        <p><em>UFC 282: Blachowicz vs. Ankalaev</em></p>
+        <p>3rd Round Submission – Neck Crank</p>
+        <small>2022</small>
+    </div>
+
+    <div class="fight-card win">
+        <h2>vs. Brad Tavares</h2>
+        <p><em>UFC 276: Adesanya vs. Cannonier</em></p>
+        <p>3rd Round Decision – Unanimous</p>
+        <small>2022</small>
+    </div>
+
+    <div class="fight-card win">
+        <h2>vs. Trevin Giles</h2>
+        <p><em>UFC 264: Poirier vs. McGregor 3</em></p>
+        <p>2nd Round KO – Punch</p>
+        <small>2021</small>
+    </div>
+
+    <div class="fight-card win">
+        <h2>vs. Markus Perez</h2>
+        <p><em>UFC Fight Night: Moraes vs. Sandhagen</em></p>
+        <p>1st Round KO – Punch</p>
+        <small>2020</small>
+    </div>
+
+    <!-- JavaScript 脚本 -->
+    <script>
+    document.getElementById('add-fight-btn').onclick = function() {
+        document.getElementById('fight-modal').style.display = 'block';
+    };
+
+    function closeModal() {
+        document.getElementById('fight-modal').style.display = 'none';
+    }
+
+    function addFightCard() {
+        const opponent = document.getElementById('opponent').value;
+        const event = document.getElementById('event').value;
+        const result = document.getElementById('result').value;
+        const method = document.getElementById('method').value;
+        const year = document.getElementById('year').value;
+
+        if (!opponent || !event || !method || !year) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        const card = document.createElement('div');
+        card.className = `fight-card ${result}`;
+        card.innerHTML = `
+            <h2>vs. ${opponent}</h2>
+            <p><em>${event}</em></p>
+            <p>${method}</p>
+            <small>${year}</small>
+        `;
+
+        document.body.appendChild(card);
+        closeModal();
+
+        // 重置表单
+        document.getElementById('opponent').value = '';
+        document.getElementById('event').value = '';
+        document.getElementById('result').value = 'win';
+        document.getElementById('method').value = '';
+        document.getElementById('year').value = '';
+    }
+    </script>
+</body>
+</html>
