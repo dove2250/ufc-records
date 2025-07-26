@@ -1,14 +1,18 @@
+<h1>UFC Records</h1>
+<input type="text" id="fighter-input" placeholder="Enter fighter name (e.g. topuria)">
+<button onclick="goToFighter()">Search</button>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>UFC Records</title>
-</head>
-<body>
-    <h1>UFC Records</h1>
-    <ul>
-        <li><a href="topuria.html">Ilia Topuria</a></li>
-    </ul>
-</body>
-</html>
+<script>
+function goToFighter() {
+  const name = document.getElementById('fighter-input').value.trim().toLowerCase();
+  const url = name + ".html";
+  fetch(url)
+    .then(res => {
+      if (res.ok) {
+        window.location.href = url;
+      } else {
+        alert("No record found for: " + name);
+      }
+    });
+}
+</script>
