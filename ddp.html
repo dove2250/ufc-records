@@ -9,29 +9,7 @@
     <h1>Dricus Du Plessis</h1>
     <p class="subtitle">👑 UFC Middleweight Champion | 23-2</p>
 
-    <!-- 右上角加号按钮 -->
-    <button id="add-fight-btn" title="Add Fight">➕</button>
-
-    <!-- 弹窗表单 -->
-    <div id="fight-modal">
-      <div class="modal-content">
-        <h3>Add New Fight</h3>
-        <label>Opponent: <input type="text" id="opponent"></label><br>
-        <label>Event Name: <input type="text" id="event"></label><br>
-        <label>Result:
-          <select id="result">
-            <option value="win">Win</option>
-            <option value="loss">Loss</option>
-            <option value="draw">Draw/NC</option>
-          </select>
-        </label><br>
-        <label>Method: <input type="text" id="method"></label><br>
-        <label>Year: <input type="text" id="year"></label><br>
-        <button onclick="addFightCard()">Add</button>
-        <button onclick="closeModal()">Cancel</button>
-      </div>
-    </div>
-
+   
     <!-- 现有战绩卡片 -->
     <div class="fight-card">
         <h2>vs. Khamzat Chimaev 👑</h2>
@@ -103,47 +81,6 @@
         <small>2020</small>
     </div>
 
-    <!-- JavaScript 脚本 -->
-    <script>
-    document.getElementById('add-fight-btn').onclick = function() {
-        document.getElementById('fight-modal').style.display = 'block';
-    };
-
-    function closeModal() {
-        document.getElementById('fight-modal').style.display = 'none';
-    }
-
-    function addFightCard() {
-        const opponent = document.getElementById('opponent').value;
-        const event = document.getElementById('event').value;
-        const result = document.getElementById('result').value;
-        const method = document.getElementById('method').value;
-        const year = document.getElementById('year').value;
-
-        if (!opponent || !event || !method || !year) {
-            alert("Please fill in all fields.");
-            return;
-        }
-
-        const card = document.createElement('div');
-        card.className = `fight-card ${result}`;
-        card.innerHTML = `
-            <h2>vs. ${opponent}</h2>
-            <p><em>${event}</em></p>
-            <p>${method}</p>
-            <small>${year}</small>
-        `;
-
-        document.body.appendChild(card);
-        closeModal();
-
-        // 重置表单
-        document.getElementById('opponent').value = '';
-        document.getElementById('event').value = '';
-        document.getElementById('result').value = 'win';
-        document.getElementById('method').value = '';
-        document.getElementById('year').value = '';
-    }
-    </script>
+   
 </body>
 </html>
