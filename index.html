@@ -1,18 +1,123 @@
-<h1>UFC Records</h1>
-<input type="text" id="fighter-input" placeholder="Enter fighter name (e.g. topuria)">
-<button onclick="goToFighter()">Search</button>
-
-<script>
-function goToFighter() {
-  const name = document.getElementById('fighter-input').value.trim().toLowerCase();
-  const url = name + ".html";
-  fetch(url)
-    .then(res => {
-      if (res.ok) {
-        window.location.href = url;
-      } else {
-        alert("No record found for: " + name);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>UFC Records</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fefefe;
+      color: #222;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #0077cc;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0, 119, 204, 0.3);
+    }
+    .search-container {
+      margin: 30px 0 50px 0;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      max-width: 400px;
+    }
+    input#fighter-input {
+      flex: 1 1 auto;
+      padding: 12px 15px;
+      font-size: 1.1rem;
+      border: 2px solid #0077cc;
+      border-radius: 8px;
+      outline-offset: 2px;
+      transition: border-color 0.3s ease;
+    }
+    input#fighter-input:focus {
+      border-color: #005fa3;
+    }
+    button {
+      background-color: #0077cc;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0, 119, 204, 0.4);
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+    ul#fighter-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 400px;
+      width: 100%;
+    }
+    ul#fighter-list li {
+      margin: 12px 0;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    ul#fighter-list li a {
+      color: #0077cc;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: border-bottom-color 0.3s ease;
+    }
+    ul#fighter-list li a:hover {
+      border-bottom-color: #005fa3;
+    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.2rem;
       }
-    });
-}
-</script>
+      .search-container {
+        max-width: 100%;
+      }
+      ul#fighter-list li {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>UFC Records</h1>
+
+  <div class="search-container">
+    <input type="text" id="fighter-input" placeholder="Enter fighter name (e.g. topuria)" />
+    <button onclick="goToFighter()">Search</button>
+  </div>
+
+  <ul id="fighter-list">
+    <li><a href="topuria.html">Ilia Topuria</a></li>
+    <!-- 后续添加选手列表 -->
+  </ul>
+
+  <script>
+    function goToFighter() {
+      const name = document.getElementById('fighter-input').value.trim().toLowerCase();
+      if (!name) return alert('Please enter a fighter name.');
+      const url = name + '.html';
+      fetch(url)
+        .then(res => {
+          if (res.ok) {
+            window.location.href = url;
+          } else {
+            alert('No record found for: ' + name);
+          }
+        })
+        .catch(() => alert('Network error, please try again.'));
+    }
+  </script>
+</body>
+</html>
